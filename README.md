@@ -8,7 +8,21 @@ you can test xv6-x86_64 on qemu emulator.
 
 ` make qemu`
 
-The below is the original README of xv6.
+if you want to gdb xv6, then follow steps.
+
+1. on first terminal, gdb server on
+
+` make qemu-gdb`
+
+2. on second terminal, add the gdb config.
+
+` $HOME/.gdbinit >> add-auto-load-safe-path $HOME/xv6-x86_64/.gdbinit`
+
+then go xv6-x86_64 drectory. do gdb!
+
+` ~/xv6-x86_64$ gdb`
+
+The below is the original README of xv6 (x86).
 
 ---
 
