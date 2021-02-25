@@ -16,7 +16,7 @@ if you want to gdb xv6, then follow steps.
 
 2. on second terminal, add the gdb config.
 
-` $HOME/.gdbinit >> add-auto-load-safe-path $HOME/xv6-x86_64/.gdbinit`
+` "add-auto-load-safe-path $HOME/xv6-x86_64/.gdbinit" >> $HOME/.gdbinit`
 
 then go xv6-x86_64 drectory. do gdb!
 
