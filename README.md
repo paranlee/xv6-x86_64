@@ -1,5 +1,13 @@
 x86\_64 implementation of [xv6](https://github.com/mit-pdos/xv6-public).
 
+On x86_64 PC, if you installed build-essential. 
+
+` sudo apt -y install qemu-system`
+
+you can test xv6-x86_64 on qemu emulator.
+
+` make qemu`
+
 The below is the original README of xv6.
 
 ---
