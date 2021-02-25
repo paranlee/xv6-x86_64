@@ -87,7 +87,7 @@ qemu: $(IMAGES)
 	$(QEMU) -nographic $(QEMUOPTS)
 
 qemu-gdb: $(IMAGES) .gdbinit
-	$(QEMU) $(QEMUOPTS) -S
+	$(QEMU) -nographic $(QEMUOPTS) -S
 
 format:
 	./format.sh
