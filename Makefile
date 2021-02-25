@@ -84,7 +84,7 @@ gdb:
 
 # qemu: $(IMAGES) pre-qemu
 qemu: $(IMAGES)
-	$(QEMU) $(QEMUOPTS)
+	$(QEMU) -nographic $(QEMUOPTS)
 
 qemu-gdb: $(IMAGES) .gdbinit
 	$(QEMU) $(QEMUOPTS) -S
