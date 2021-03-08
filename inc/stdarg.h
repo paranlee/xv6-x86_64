@@ -1,6 +1,7 @@
 #ifndef XV6_X86_64_STDARG_H
 #define XV6_X86_64_STDARG_H
 
+// https://stackoverflow.com/questions/49733154/how-is-builtin-va-list-implemented
 typedef __builtin_va_list va_list;
 
 #define va_start(v, l) __builtin_va_start(v, l)
