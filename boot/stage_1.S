@@ -134,6 +134,7 @@ rest_of_bootloader_load_failed:
   int $0x10
 
 spin16:
+  # https://en.wikipedia.org/wiki/HLT_(x86_instruction)
   hlt
   jmp spin16
 

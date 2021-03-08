@@ -132,6 +132,8 @@ void panic(char *s) {
   // getcallerpcs(&s, pcs);
   // for(i=0; i<10; i++)
   //   cprintf(" %p", pcs[i]);
+
+  // https://en.wikipedia.org/wiki/HLT_(x86_instruction)
   panicked = 1; // freeze other CPU
   for (;;)
     __asm__ volatile("hlt");

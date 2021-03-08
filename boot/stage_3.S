@@ -72,6 +72,7 @@ jump_to_long_mode:
     retf # Load CS with 64 bit segment and flush the instruction cache
 
 spin64:
+  # https://en.wikipedia.org/wiki/HLT_(x86_instruction)
   hlt
   jmp spin64
 
