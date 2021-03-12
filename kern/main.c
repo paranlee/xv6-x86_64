@@ -11,35 +11,38 @@ extern char end[]; // first address after kernel loaded from ELF file
 // Allocate a real stack and switch to it, first
 // doing some setup required for memory allocator to work.
 int main(void) {
-  kinit1(end);   // phys page allocator
-  kvmalloc();    // kernel page table
-  mpinit();      // detect other processors
-  lapicinit();   // interrupt controller
-  seginit();     // segment descriptors
-  picinit();     // disable pic
-  ioapicinit();  // another interrupt controller
-  consoleinit(); // console hardware
-  uartinit();    // serial port
-  // pinit();         // process table
-  tvinit();   // trap vectors
-  binit();    // buffer cache
-  fileinit(); // file table
-  ideinit();  // disk
-  // startothers();   // start other processors
-  kinit2();   // must come after startothers()
-  userinit(); // first user process
-  cprintf("cprintf format test1: %d, 0x%x, 0x%p, %s\n", 256, 256, main,
-          "hello");
-  cprintf("cprintf format test2: %c %c %c\n", 'a', 'b', 'c');
-  cprintf("initialization finished\n");
+    kinit1(end);   // phys page allocator
+    kvmalloc();    // kernel page table
+    mpinit();      // detect other processors
+    lapicinit();   // interrupt controller
+    seginit();     // segment descriptors
+    picinit();     // disable pic
+    ioapicinit();  // another interrupt controller
+    consoleinit(); // console hardware
+    uartinit();    // serial port
+    // pinit();         // process table
+    tvinit();   // trap vectors
+    binit();    // buffer cache
+    fileinit(); // file table
+    ideinit();  // disk
+    // startothers();   // start other processors
+    kinit2();   // must come after startothers()
+    userinit(); // first user process
 
-  mpmain(); // finish this processor's setup
+    cprintf("cprintf format test1: %d, 0x%x, 0x%p, %s\n", 
+        256, 256, main, "hello");
+    cprintf("cprintf format test2: %c %c %c\n", 
+        'a', 'b', 'c');
+    cprintf("initialization finished\n");
+
+    mpmain(); // finish this processor's setup
 }
 
 // Common CPU setup code.
 static void mpmain(void) {
-  cprintf("cpu%d: starting %d\n", cpuid(), cpuid());
-  idtinit();                    // load idt register
-  xchg(&(mycpu()->started), 1); // tell startothers() we're up
-  scheduler();                  // start running processes
+    cprintf("cpu%d: starting %d\n", cpuid(), cpuid());
+
+    idtinit();                    // load idt register
+    xchg(&(mycpu()->started), 1); // tell startothers() we're up
+    scheduler();                  // start running processes
 }
